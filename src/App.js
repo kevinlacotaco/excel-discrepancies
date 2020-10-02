@@ -113,6 +113,8 @@ export const App = () => {
   const resetForm = () => {
     setSRSFile(null);
     setQBFile(null);
+    setSRS(null);
+    setQB(null);
   };
 
   useEffect(() => {
