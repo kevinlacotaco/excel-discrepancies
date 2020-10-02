@@ -149,6 +149,8 @@ export const App = () => {
           ></input>
         </label>
       </div>
+      {srs && <p>Loaded SRS Report</p>}
+      {qb && <p>Loaded QB Report</p>}
     </div>
   );
 };
