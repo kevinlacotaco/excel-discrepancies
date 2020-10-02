@@ -121,29 +121,35 @@ function App() {
   });
 
   return (
-    <>
-      <header className="App-header"></header>
-      <div className="App">
-        <div className="field">
-          <label htmlFor="srs-input">SRS</label>
+    <div className="App">
+      <header className="App-header">
+        <h1>Difference Finder</h1>
+      </header>
+      <div className="field">
+        <label className="cursor-pointer label-button" htmlFor="srs-input">
+          Select SRS Report
           <input
             id="srs-input"
             type="file"
             accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            className="file-hidden"
             onChange={parseSRSInput}
           ></input>
-        </div>
-        <div className="field">
-          <label htmlFor="qb-input">QB</label>
+        </label>
+      </div>
+      <div className="field">
+        <label className="cursor-pointer label-button" htmlFor="qb-input">
+          Select QB Report
           <input
             id="qb-input"
             type="file"
             accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            className="file-hidden"
             onChange={parseQBInput}
           ></input>
-        </div>
+        </label>
       </div>
-    </>
+    </div>
   );
 }
 
