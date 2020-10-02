@@ -61,7 +61,7 @@ const compareSheets = (qb, srs) => {
   XLSX.writeFile(workbook, "out.xls");
 };
 
-function App() {
+export const App = () => {
   const [qb, setQB] = useState(null);
   const [srs, setSRS] = useState(null);
 
@@ -151,6 +151,4 @@ function App() {
       </div>
     </div>
   );
-}
-
-export default App;
+};
