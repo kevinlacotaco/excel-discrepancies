@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import XLSX from "xlsx";
+import React, { useState, useEffect } from 'react';
+import XLSX from 'xlsx';
 
-import "./App.css";
+import './App.css';
 
 const extractName = (rowData) => {
   const result = /(\w+(?:,)? \w+).*/.exec(rowData);
@@ -50,15 +50,15 @@ const compareSheets = (qb, srs) => {
   const sameNameDiffTotalSheet = XLSX.utils.json_to_sheet(sameNameDiffTotal);
 
   workbook.SheetNames = [
-    "Missing in QB",
-    "Missing in SRS",
-    "Same Name Different Total",
+    'Missing in QB',
+    'Missing in SRS',
+    'Same Name Different Total',
   ];
-  workbook.Sheets["Missing in QB"] = missingQBSheet;
-  workbook.Sheets["Missing in SRS"] = missingSRSSheet;
-  workbook.Sheets["Same Name Different Total"] = sameNameDiffTotalSheet;
+  workbook.Sheets['Missing in QB'] = missingQBSheet;
+  workbook.Sheets['Missing in SRS'] = missingSRSSheet;
+  workbook.Sheets['Same Name Different Total'] = sameNameDiffTotalSheet;
 
-  XLSX.writeFile(workbook, "out.xls");
+  XLSX.writeFile(workbook, 'out.xls');
 };
 
 export const App = () => {
@@ -69,15 +69,15 @@ export const App = () => {
     const files = data.target.files;
     const reader = new FileReader();
 
-    reader.addEventListener("load", (load) => {
+    reader.addEventListener('load', (load) => {
       const data = new Uint8Array(load.target.result);
-      const workbook = XLSX.read(data, { type: "array" });
+      const workbook = XLSX.read(data, { type: 'array' });
 
       const parsed = XLSX.utils
         .sheet_to_json(workbook.Sheets.Sheet1)
         .map((qbPerson) => {
           return {
-            name: extractName(qbPerson["__EMPTY_1"]),
+            name: extractName(qbPerson['__EMPTY_1']),
             total: qbPerson.TOTAL,
           };
         })
@@ -93,9 +93,9 @@ export const App = () => {
     const files = data.target.files;
     const reader = new FileReader();
 
-    reader.addEventListener("load", (load) => {
+    reader.addEventListener('load', (load) => {
       const data = new Uint8Array(load.target.result);
-      const workbook = XLSX.read(data, { type: "array" });
+      const workbook = XLSX.read(data, { type: 'array' });
 
       const parsed = XLSX.utils.sheet_to_json(workbook.Sheets.Sheet1);
 
@@ -104,8 +104,8 @@ export const App = () => {
       setSRS(
         parsed.map((srsPerson) => {
           return {
-            name: srsPerson["Deceased Name"].trim(),
-            total: srsPerson["Total Due"],
+            name: srsPerson['Deceased Name'].trim(),
+            total: srsPerson['Total Due'],
           };
         })
       );
