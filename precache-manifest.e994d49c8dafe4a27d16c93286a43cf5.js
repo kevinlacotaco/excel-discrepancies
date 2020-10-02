@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9054eeabe277e3a647247f2129fd748c",
+    "revision": "1349058065f9f5d71e9425f28559f09b",
     "url": "/excel-discrepancies/index.html"
   },
   {
-    "revision": "c4f3771ff4ca47626a4a",
-    "url": "/excel-discrepancies/static/css/main.1438e4a2.chunk.css"
+    "revision": "ea4b131bd96017d63fba",
+    "url": "/excel-discrepancies/static/css/main.64af4187.chunk.css"
   },
   {
     "revision": "bbb89a4dd5a96fcb1cd6",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/excel-discrepancies/static/js/2.a441a87e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c4f3771ff4ca47626a4a",
-    "url": "/excel-discrepancies/static/js/main.8e52b626.chunk.js"
+    "revision": "ea4b131bd96017d63fba",
+    "url": "/excel-discrepancies/static/js/main.379812e7.chunk.js"
   },
   {
     "revision": "eb630f27e65fe0a21ed2",
