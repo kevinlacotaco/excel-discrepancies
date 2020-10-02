@@ -60,6 +60,8 @@ const compareSheets = (qb, srs) => {
 export const App = () => {
   const [qb, setQB] = useState(null);
   const [srs, setSRS] = useState(null);
+  const [srsFile, setSRSFile] = useState(null);
+  const [qbFile, setQBFile] = useState(null);
 
   const parseQBInput = (data) => {
     const files = data.target.files;
@@ -80,6 +82,7 @@ export const App = () => {
       setQB(parsed);
     });
 
+    setQBFile(files[0]);
     reader.readAsArrayBuffer(files[0]);
   };
 
@@ -103,7 +106,13 @@ export const App = () => {
       );
     });
 
+    setSRSFile(files[0]);
     reader.readAsArrayBuffer(files[0]);
+  };
+
+  const resetForm = () => {
+    setSRSFile(null);
+    setQBFile(null);
   };
 
   useEffect(() => {
@@ -117,32 +126,39 @@ export const App = () => {
       <header className="App-header">
         <h1>Difference Finder</h1>
       </header>
-      <div className="field">
-        <label className="cursor-pointer label-button" htmlFor="srs-input">
-          Select SRS Report
-          <input
-            id="srs-input"
-            type="file"
-            accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            className="file-hidden"
-            onChange={parseSRSInput}
-          ></input>
-        </label>
-      </div>
-      <div className="field">
-        <label className="cursor-pointer label-button" htmlFor="qb-input">
-          Select QB Report
-          <input
-            id="qb-input"
-            type="file"
-            accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            className="file-hidden"
-            onChange={parseQBInput}
-          ></input>
-        </label>
-      </div>
-      {srs && <p>Loaded SRS Report</p>}
-      {qb && <p>Loaded QB Report</p>}
+      <form onReset={resetForm}>
+        <div className="field">
+          <label className="cursor-pointer label-button" htmlFor="srs-input">
+            Select SRS Report
+            <input
+              id="srs-input"
+              type="file"
+              accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              className="file-hidden"
+              onChange={parseSRSInput}
+            ></input>
+          </label>
+        </div>
+        <div className="field">
+          <label className="cursor-pointer label-button" htmlFor="qb-input">
+            Select QB Report
+            <input
+              id="qb-input"
+              type="file"
+              accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              className="file-hidden"
+              onChange={parseQBInput}
+            ></input>
+          </label>
+        </div>
+        {(srsFile || qbFile) && (
+          <button className="btn-reset" type="reset">
+            Clear Files
+          </button>
+        )}
+      </form>
+      {srsFile && <p>{`Loaded SRS Report: ${srsFile.name}`}</p>}
+      {qbFile && <p>{`Loaded SRS Report: ${qbFile.name}`}</p>}
     </div>
   );
 };

@@ -39,3 +39,11 @@
   background: white;
   color: black;
 }
+
+.btn-reset {
+  background: #dc3545;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  border-color: #dc3545;
+}
