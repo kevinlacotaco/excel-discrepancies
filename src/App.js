@@ -11,23 +11,19 @@ const extractName = (rowData) => {
 };
 
 const compareSheets = (qb, srs) => {
-  const missingQB = srs.filter((person) => {
-    return !qb.find((p) => {
-      return p.name != null && person.name.includes(p.name);
-    });
-  });
+  const missingQB = srs.filter(
+    (person) => !qb.find((p) => p.name != null && person.name.includes(p.name))
+  );
 
-  const missingSRS = qb.filter((person) => {
-    return !srs.find((p) => {
-      return p.name != null && person.name.includes(p.name);
-    });
-  });
+  const missingSRS = qb.filter(
+    (person) => !srs.find((p) => p.name != null && person.name.includes(p.name))
+  );
 
   const sameNameDiffTotal = srs
     .map((person) => {
-      const qbPerson = qb.find((p) => {
-        return p.name != null && person.name.includes(p.name.trim());
-      });
+      const qbPerson = qb.find(
+        (p) => p.name != null && person.name.includes(p.name.trim())
+      );
 
       if (qbPerson && qbPerson.total !== person.total) {
         return {
@@ -75,12 +71,10 @@ export const App = () => {
 
       const parsed = XLSX.utils
         .sheet_to_json(workbook.Sheets.Sheet1)
-        .map((qbPerson) => {
-          return {
-            name: extractName(qbPerson['__EMPTY_1']),
-            total: qbPerson.TOTAL,
-          };
-        })
+        .map((qbPerson) => ({
+          name: extractName(qbPerson['__EMPTY_1']),
+          total: qbPerson.TOTAL,
+        }))
         .filter((p) => p.name != null);
 
       setQB(parsed);
@@ -102,12 +96,10 @@ export const App = () => {
       parsed.pop();
 
       setSRS(
-        parsed.map((srsPerson) => {
-          return {
-            name: srsPerson['Deceased Name'].trim(),
-            total: srsPerson['Total Due'],
-          };
-        })
+        parsed.map((srsPerson) => ({
+          name: srsPerson['Deceased Name'].trim(),
+          total: srsPerson['Total Due'],
+        }))
       );
     });
 
