@@ -160,7 +160,7 @@ export const App = () => {
         )}
       </form>
       {srsFile && <p>{`Loaded SRS Report: ${srsFile.name}`}</p>}
-      {qbFile && <p>{`Loaded SRS Report: ${qbFile.name}`}</p>}
+      {qbFile && <p>{`Loaded QB Report: ${qbFile.name}`}</p>}
     </div>
   );
 };
