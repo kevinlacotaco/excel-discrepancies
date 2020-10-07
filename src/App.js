@@ -135,7 +135,7 @@ export const App = () => {
             <input
               id="srs-input"
               type="file"
-              accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xls"
               className="file-hidden"
               onChange={parseSRSInput}
             ></input>
@@ -147,7 +147,7 @@ export const App = () => {
             <input
               id="qb-input"
               type="file"
-              accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xls"
               className="file-hidden"
               onChange={parseQBInput}
             ></input>
