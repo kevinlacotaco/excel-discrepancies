@@ -100,9 +100,9 @@ export const App = () => {
 
       setSRS(
         parsed.map((srsPerson) => ({
-          name: srsPerson['Deceased Name'].trim(),
+          name: srsPerson['Deceased Name']?.trim(),
           total: srsPerson['Total Due'],
-        }))
+        })).filter(p => p.name != null)
       );
     });
 
